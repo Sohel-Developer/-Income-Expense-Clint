@@ -7,17 +7,18 @@ import { dollar } from '../../utils/Icons';
 import Chart from '../Chart/Chart';
 
 function Dashboard() {
-    const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
+    const { totalExpenses, incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
 
     useEffect(() => {
         getIncomes()
         getExpenses()
     }, [])
+    console.log(incomes);
 
     return (
         <DashboardStyled>
             <InnerLayout>
-                <h1>All Transactions</h1>
+                <h1>All Transactions </h1>
                 <div className="stats-con">
                     <div className="chart-con">
                         <Chart />
@@ -47,19 +48,19 @@ function Dashboard() {
                         <h2 className="salary-title">Min <span>Salary</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...incomes.map(item => item.amount))}
+                                {dollar}{Math.min(...incomes.map(item => item.amount))}
                             </p>
                             <p>
-                                ${Math.max(...incomes.map(item => item.amount))}
+                                {dollar}{Math.max(...incomes.map(item => item.amount))}
                             </p>
                         </div>
                         <h2 className="salary-title">Min <span>Expense</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...expenses.map(item => item.amount))}
+                                {dollar}{Math.min(...expenses.map(item => item.amount))}
                             </p>
                             <p>
-                                ${Math.max(...expenses.map(item => item.amount))}
+                                {dollar}{Math.max(...expenses.map(item => item.amount))}
                             </p>
                         </div>
                     </div>
@@ -94,6 +95,8 @@ const DashboardStyled = styled.div`
                     p{
                         font-size: 3.5rem;
                         font-weight: 700;
+                        display: flex;
+                        align-items: center;
                     }
                 }
 
@@ -107,6 +110,7 @@ const DashboardStyled = styled.div`
                         color: var(--color-green);
                         opacity: 0.6;
                         font-size: 4.5rem;
+                        
                     }
                 }
             }
@@ -138,6 +142,8 @@ const DashboardStyled = styled.div`
                 p{
                     font-weight: 600;
                     font-size: 1.6rem;
+                    display: flex;
+                    align-items: center;
                 }
             }
         }

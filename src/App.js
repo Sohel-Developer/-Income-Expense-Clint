@@ -1,13 +1,14 @@
-import React, {useState, useMemo} from 'react'
+import React, { useState, useMemo } from 'react'
 import styled from "styled-components";
 import bg from './img/bg.png'
-import {MainLayout} from './styles/Layouts'
+import { MainLayout } from './styles/Layouts'
 import Orb from './Components/Orb/Orb'
 import Navigation from './Components/Navigation/Navigation'
 import Dashboard from './Components/Dashboard/Dashboard';
 import Income from './Components/Income/Income'
 import Expenses from './Components/Expenses/Expenses';
 import { useGlobalContext } from './context/globalContext';
+import History from './History/History';
 
 function App() {
   const [active, setActive] = useState(1)
@@ -16,23 +17,23 @@ function App() {
   console.log(global);
 
   const displayData = () => {
-    switch(active){
+    switch (active) {
       case 1:
         return <Dashboard />
       case 2:
-        return <Dashboard />
+        return <History />
       case 3:
         return <Income />
-      case 4: 
+      case 4:
         return <Expenses />
-      default: 
+      default:
         return <Dashboard />
     }
   }
 
   const orbMemo = useMemo(() => {
     return <Orb />
-  },[])
+  }, [])
 
   return (
     <AppStyled bg={bg} className="App">
