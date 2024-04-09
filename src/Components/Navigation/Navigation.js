@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
 import { signout } from '../../utils/Icons'
@@ -31,6 +31,7 @@ function Navigation({ active, setActive }) {
                 <li>
                     {signout} Sign Out
                 </li>
+                <p><small> &copy; sohel.webdevoloper@gmail.com</small></p>
             </div>
         </NavStyled>
     )
